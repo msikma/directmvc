@@ -1,0 +1,9 @@
+articles_index:
+	url: /
+	controller: Articles_MainController
+	method: Index
+	
+articles_view:
+	url: /view/:slug/
+	controller: Articles_MainController
+	method: View
