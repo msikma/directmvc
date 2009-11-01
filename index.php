@@ -10,15 +10,56 @@
 * @package DirectMVC
 */
 
+
 /**
-* This constant will contain the real path to the www-folder where the framework is located
+* Set the name of the System folder here. Include the full path if
+* it's not in the same directory, but don't use a trailing slash.
+*
+* e.g. 'System' or '/home/ruben/domains/mysite.com/System'.
+*/
+$system_folder = 'System';
+
+/**
+* In addition to the System folder, you can customise the location
+* of the Application folder as well. Again, no trailing slash.
+*/
+$application_folder = 'Application';
+
+/**
+* Now let's set some constants that will be used throughout the
+* framework. These are used to minimise the possibility of path
+* problems down the road.
+*
+* The BASEPATH constant will contain the real path to the folder where the
+* framework is located.
 */
 define( 'BASEPATH', realpath(dirname(__FILE__)) . '/' );
 
 /**
-* Require the framework initialization mechanism
+* Define the absolute system and application folder paths and
+* converts them to Unix-style separators if necessary.
 */
-require_once( BASEPATH . 'System/Lib/Config.php' );
+$paths = array(
+	array( 'SYSPATH', 'system_folder' ),
+	array( 'APPPATH', 'application_folder' )
+);
+foreach ($paths as $k => $v) {
+	$path = $$v[1];
+	if (strpos($path, '/') === false) {
+		$path = BASEPATH . $path;
+	}
+	define( $v[0], str_replace('\\', '/', $path) . '/' );
+}
+
+/**
+* Defines this current file (probably 'index.php').
+*/
+define( 'SELF', pathinfo(__FILE__, PATHINFO_BASENAME) );
+
+/**
+* Require the framework initialization mechanism.
+*/
+require_once( SYSPATH . 'Lib/Config.php' );
 
 /**
 * Dispatch the routing, which calls upon the

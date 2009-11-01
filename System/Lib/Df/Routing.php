@@ -8,10 +8,30 @@ class Df_Routing
     public static function dispatch()
     {
         self::$_routes = self::_getRoutes('routes');
-
-        $uri = explode('?', $_SERVER['REQUEST_URI']);
-        $uri = reset($uri);
-
+		
+		/**
+		* Determine the URI from any of these sources.
+		* A value of 1 determines that SCRIPT_NAME should be stripped
+		* from the string.
+		*/
+		$sources = array(
+			'PATH_INFO' => 0,
+			'QUERY_STRING' => 0,
+			'ORIG_PATH_INFO' => 1
+		);
+		$uri = '/';
+		foreach ($sources as $k => $v) {
+			if ($v == 0) {
+				$path = isset($_SERVER[$k]) ? $_SERVER[$k] : @getenv($k);
+			} else {
+				$path = str_replace($_SERVER['SCRIPT_NAME'], '', isset($_SERVER[$k]) ? $_SERVER[$k] : @getenv($k));
+			}
+			if (trim($path, '/') != '' && $path != "/" . SELF) {
+				$uri = $path;
+				break;
+			}
+		}
+		
         if (isset(self::$_routes['simple'][$uri]))
         {
             $activeRoute = self::$_routes['simple'][$uri];
