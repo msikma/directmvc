@@ -11,12 +11,17 @@
 */
 
 /**
+* This system's version number.
+*/
+define( 'DMVC_VERSION', '0.1' );
+
+/**
 * Define the paths required for autoloading
 * our main libraries
 */
-$Df_Base_Path = BASEPATH.'System/Lib/';
-$Df_System_Path = BASEPATH.'System/';
-$Df_Application_Path = BASEPATH . 'Application/';
+$Df_Base_Path = SYSPATH . 'Lib/';
+$Df_System_Path = SYSPATH;
+$Df_Application_Path = APPPATH;
 
 /**
 * Define the templating engine base path
@@ -53,4 +58,4 @@ Df_Config::set( 'df_mvc_dir', $Df_Base_Path );
 Df_Config::set( 'df_cache_dir', $Df_System_Path . 'Cache/Routes/' );
 Df_Config::set( 'df_config_dir', $Df_System_Path . 'Config/' );
 Df_Config::set( 'df_routes_dir', $Df_Application_Path . 'Routes/' );
-Df_Config::set( 'df_lib_dir', $dfmvc.'lib/' );
+Df_Config::set( 'df_lib_dir', $Df_Base_Path );
