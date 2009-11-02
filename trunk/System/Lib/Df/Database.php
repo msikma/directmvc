@@ -27,12 +27,25 @@ class Df_Database
 	*/
 	public static function getInstance()
 	{
+		/**
+		* Only create a new instance when there's not
+		* one already in our static property
+		*/
 		if (is_null(self::$_dbh)) {
+			
+			/**
+			* Use the database settings from the config
+			* class to connect to MySQL
+			*/
 			$database_host = Df_Config::get( 'database_host' );
 			$database_user = Df_Config::get( 'database_user' );
 			$database_password = Df_Config::get( 'database_password' );
 			$database_database = Df_Config::get( 'database_database' );
 			
+			/**
+			* Store this new instance in it's private 
+			* property
+			*/
             self::$_dbh = new Df_Database( $database_host, $database_user, $database_password, $database_database );
         }
         
