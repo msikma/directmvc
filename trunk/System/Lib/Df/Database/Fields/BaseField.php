@@ -6,13 +6,13 @@ class BaseField
 
 	}
 	
-	protected function setData( $data )
+	public function setData( $data )
 	{
 		$this->data = $data;
 	}
 	
-	protected function get( $data )
+	public function getData()
 	{
-		
+		return $this->data;
 	}
 }

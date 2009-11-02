@@ -2,10 +2,27 @@
 class Df_Database_Model
 {
 	protected $fields_array = array();
+	public static $_dbh;
 	
 	public function __construct()
 	{
+		Df_Database::getInstance();
 		$this->Fields();
+	}
+	
+	/**
+	* get
+	* 
+	* This method is used to select either a single row or a set
+	* of rows that meet specified criteria
+	* 
+	* @param array $options
+	* @return ArticlesModel
+	*/
+	public static function get( $options )
+	{
+		
+		return new ArticlesModel();
 	}
 	
 	function save()
@@ -28,12 +45,13 @@ class Df_Database_Model
 	*/
 	public function __set( $var, $value )
 	{
+		
 		/**
 		* When setting a new field using a model subclass we
 		* will store this field in our fields array
 		*/
 		if( $value instanceof BaseField && !isset( $this->fields_array[$var] ) ){
-			$this->fields[ $var ] = $value;
+			$this->fields_array[ $var ] = $value;
 			return;
 		}
 		
@@ -42,7 +60,7 @@ class Df_Database_Model
 		* store the data in our database fields
 		*/
 		if( isset( $this->fields_array[$var] ) ){
-			$this->fields[$var]->setData( $value );
+			$this->fields_array[$var]->setData( $value );
 		}
 		else{
 			/**
