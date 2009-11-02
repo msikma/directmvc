@@ -60,3 +60,8 @@ Df_Config::set( 'df_cache_dir', $Df_System_Path . 'Cache/Routes/' );
 Df_Config::set( 'df_config_dir', $Df_System_Path . 'Config/' );
 Df_Config::set( 'df_routes_dir', $Df_Application_Path . 'Routes/' );
 Df_Config::set( 'df_lib_dir', $Df_Base_Path );
+
+/**
+* See if we're loading the database
+*/
+require_once( $Df_Application_Path . 'Config/database.php' );
