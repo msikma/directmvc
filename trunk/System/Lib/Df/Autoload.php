@@ -5,7 +5,7 @@ class Df_Autoload
 
 
     public static function autoload($className)
-    {                                
+    {                            
         $arr = explode('_', $className);
 
         $filename = array_pop($arr);
@@ -17,7 +17,6 @@ class Df_Autoload
             if (is_file($directory.$className))
             {
                 require_once $directory.$className;
-                //echo $className . '<br>';
                 break;
             }
         }

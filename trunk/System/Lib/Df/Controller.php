@@ -8,6 +8,11 @@ class Df_Controller
 		) );
 	}
 	
+	protected function model( $model_name )
+	{
+		return new $model_name;
+	}
+	
     protected function _forward($name, $parameters = array())
     {
         Df_Helper_RoutingHelper::forward($name, $parameters);
