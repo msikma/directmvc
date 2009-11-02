@@ -45,10 +45,11 @@ spl_autoload_register( array( 'Df_Autoload', 'autoload' ) );
 * all models, as well as the framework base classes                  
 */
 Df_Autoload::addPackage( $Df_Base_Path );
+Df_Autoload::addPackage( $Df_Base_Path . 'Df/Database/Fields' );
 Df_Autoload::addPackage( $Df_Base_Path . 'External/' );
 Df_Autoload::addPackage( $Df_Base_Path . 'External/h2o/' );
 Df_Autoload::addPackage( $Df_Application_Path . 'Controllers/' );
-Df_Autoload::addPackage( $Df_Application_Path . 'Model/' );
+Df_Autoload::addPackage( $Df_Application_Path . 'Models/' );
 
 /**
 * Set the configuration directives required for
