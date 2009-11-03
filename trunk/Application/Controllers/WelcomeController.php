@@ -2,9 +2,6 @@
 /**
 * DirectMVC: A clean and to the point MVC framework
 * 
-* The framework setup mechanism; This file loads in
-* all of the base classes, controllers and models.
-* 
 * @author Ruben K. <ruben@directdevelopment.nl>
 * @version 0.1
 * @package DirectMVC

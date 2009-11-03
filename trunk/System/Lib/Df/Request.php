@@ -1,4 +1,15 @@
 <?php
+/**
+* DirectMVC: A clean and to the point MVC framework
+* 
+* The request object, that handles anything related
+* to HTTP requests, as well as forwarding/redirection
+* 
+* @author Ruben K. <ruben@directdevelopment.nl>
+* @version 0.1
+* @package DirectMVC
+*/
+
 class Df_Request
 {
     private $_route;
@@ -107,5 +118,35 @@ class Df_Request
     public function setRouteParameters($arr)
     {
         $this->getRoute()->setParameters($arr);
+    }
+    
+    protected function _forward($name, $parameters = array())
+    {
+        Df_Helper_RoutingHelper::forward($name, $parameters);
+    }
+
+    protected function _forwardIf($condition, $name, $parameters = array())
+    {
+        Df_Helper_RoutingHelper::forwardIf($condition, $name, $parameters);
+    }
+
+    protected function _forwardUnless($condition, $name, $parameters = array())
+    {
+        Df_Helper_RoutingHelper::forwardUnless($condition, $name, $parameters);
+    }
+
+    protected function _redirect($url, $parameters = array())
+    {
+        Df_Helper_RoutingHelper::redirect($url, $parameters);
+    }
+
+    protected function _redirectIf($condition, $url, $parameters = array())
+    {
+        Df_Helper_RoutingHelper::redirectIf($condition, $url, $parameters);
+    }
+
+    protected function _redirectUnless($condition, $url, $parameters = array())
+    {
+        Df_Helper_RoutingHelper::redirectUnless($condition, $url, $parameters);
     }
 }
