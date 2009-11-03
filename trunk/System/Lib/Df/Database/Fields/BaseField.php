@@ -1,6 +1,8 @@
 <?php
 class BaseField
 {
+	private $value;
+	
 	public function __construct()
 	{
 
