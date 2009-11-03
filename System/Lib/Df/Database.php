@@ -31,6 +31,11 @@ class Df_Database
 	private $link;
 	
 	/**
+	* @var array This property contains the history of MySQL queries
+	*/
+	private $query_history = array();
+	
+	/**
 	* __construct
 	* 
 	* Creates a new instance of the database class
@@ -137,7 +142,8 @@ class Df_Database
 	*/
 	private function _results( $query )
 	{
-		$result = mysql_query( $query );
+		$result = mysql_query( $query, $this->link );
+		
 		if( mysql_num_rows( $result ) > 0 ){
 			$result_arr = array();
 			while( $row = mysql_fetch_assoc( $result ) ){
@@ -148,5 +154,10 @@ class Df_Database
 		}
 		
 		return false;
+	}
+	
+	public function debugLog()
+	{
+		
 	}
 }
