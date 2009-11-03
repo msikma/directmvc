@@ -32,18 +32,4 @@ class WelcomeController extends Df_Controller
 			'name' => 'Ruben'
 		));
 	}
-	
-	public function Read( Df_Request $request, $id )
-	{
-		$this->_forwardIf( ( $request->getGetParameter( 'new-id' ) == 2 ), 'welcome_redirect', array(
-			'id' => $request->getGetParameter( 'id' )
-		) );	
-		
-		echo $id;
-	}
-	
-	public function Read_new( Df_Request $request, $id )
-	{
-		echo 'New: ' . $id;
-	}
 }
