@@ -10,6 +10,16 @@
 * @package DirectMVC
 */
 
+/**
+* Df_Request
+* 
+* The request object, that handles anything related
+* to HTTP requests, as well as forwarding/redirection
+* 
+* @author Ruben K. <ruben@directdevelopment.nl>
+* @version 0.1
+* @package DirectMVC
+*/
 class Df_Request
 {
     private $_route;
