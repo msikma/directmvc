@@ -1,5 +1,7 @@
 <?php
-Df_Config::set( 'database_host', 'localhost' );
-Df_Config::set( 'database_user', 'root' );
-Df_Config::set( 'database_password', 'it=..jqomlfc!' );
-Df_Config::set( 'database_database', 'dmvc' );
+Df_Config::setArray( array(
+	'database_host' => 'localhost',
+	'database_user' => 'root',
+	'database_password' => 'it=..jqomlfc!',
+	'database_database' => 'dmvc'
+));

@@ -1,12 +1,27 @@
 <?php
 class Df_Database_Model
 {
+	/**
+	* The fields will be contained here
+	* 
+	* @var array
+	*/
 	protected $fields_array = array();
-	public static $_dbh;
+	
+	/**
+	* The database class will be contained here
+	* 
+	* @var Df_Database
+	*/
+	private $dbh;
 	
 	public function __construct()
 	{
-		Df_Database::getInstance();
+		/**
+		* Either fetch the active database connection
+		* or initialize a new one
+		*/
+		$this->dbh = Df_Database::getInstance();
 		$this->Fields();
 	}
 	
@@ -65,16 +80,44 @@ class Df_Database_Model
 		else{
 			/**
 			* No such field exists...
+			* 
+			* @todo Proper error handling...
 			*/
 			echo 'This database field does not exist...';
 			exit;
 		}
 	}
 	
+	/**
+	* __get
+	* 
+	* Retrieve database field properties using this
+	* method, error when the fields are non-existant
+	* 
+	* @param string $var
+	*/
 	public function __get( $var )
 	{
+		/**
+		* Do we have this
+		*/
 		if( isset( $this->fields_array[$var] ) ){
+			/**
+			* Return the database field when called for.
+			* 
+			* @todo Decide whether to return it's value or
+			* 		the entire object that can be used at a later
+			* 		time
+			*/
 			return $this->fields_array[$var]->getData();
 		}
+		
+		/**
+		* No such field exists...
+		* 
+		* @todo Proper error handling...
+		*/
+		echo 'This database field does not exist...';
+		exit;
 	}
 }
