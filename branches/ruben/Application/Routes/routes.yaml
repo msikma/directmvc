@@ -1,0 +1,8 @@
+welcome:
+    url: /
+    controller: WelcomeController
+    method: Index
+
+articles:
+	url: /articles
+	include: routes_articles
