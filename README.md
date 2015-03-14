@@ -1,7 +1,7 @@
 directmvc
 =========
 
-A very basic MVC system with an advanced YAML-based routing engine and Django-style templating. Written by Ruben Knol and Michiel Sikma.
+A very basic MVC system with an advanced YAML-based routing engine and Django-style templating. Written in 2009 by Ruben Knol and Michiel Sikma.
 
 **This project is kept here for historical purposes.**
 
